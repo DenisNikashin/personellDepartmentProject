@@ -1,6 +1,13 @@
 public class SaveStudentOrder {
     public static void main(String[] args) {
-      saveStudentOrder();
+        StudentOrder studentOrder = new StudentOrder();
+        studentOrder.husbandFirstName = "Alex";
+        studentOrder.husbandSecondName = "Rok";
+        studentOrder.wifeFirstName = "Leen";
+        studentOrder.wifeSecondName = "Rok";
+
+
+        saveStudentOrder();
     }
 
     static void  saveStudentOrder() {
