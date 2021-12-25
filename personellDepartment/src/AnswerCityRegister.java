@@ -1,3 +1,3 @@
 public class AnswerCityRegister {
-    boolean success;
+   public boolean success;
 }
