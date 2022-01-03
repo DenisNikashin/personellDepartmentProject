@@ -6,14 +6,15 @@ public class StudentOderValidator {
         while (true) {
             StudentOrder studentOrder = readStudentOrder();
             System.out.println("Start loop");
-            if (studentOrder != null) {
+            if (studentOrder == null) {
                 break;
             }
             System.out.println("Finish");
 
             AnswerCityRegister answerCityRegister = checkCityRegister(studentOrder);
             if (!answerCityRegister.success) {
-                continue;
+               // continue;
+                break;
             }
             AnswerWedding answerWedding = checkWedding(studentOrder);
             AnswerChildren answerChildren = checkChildren(studentOrder);
@@ -30,11 +31,21 @@ public class StudentOderValidator {
         return new StudentOrder();
     }
     static AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
-        System.out.println("CityRegister is running");
-        AnswerCityRegister answerCityRegister = new AnswerCityRegister();
-        answerCityRegister.success = false;
-        return answerCityRegister;
+        CityRegisterValidator cityRegisterValidator1 = new CityRegisterValidator();
+        cityRegisterValidator1.hostName = "Host 1";
+        cityRegisterValidator1.login = "Login 1";
+        cityRegisterValidator1.password = "Password 1";
+        CityRegisterValidator cityRegisterValidator2 = new CityRegisterValidator();
+        cityRegisterValidator2.hostName = "Host 2";
+        cityRegisterValidator2.login = "Login 2";
+        cityRegisterValidator2.password = "Password 2";
+
+        AnswerCityRegister answerCityRegister1 = cityRegisterValidator1.checkCityRegister(studentOrder);
+        AnswerCityRegister answerCityRegister2 = cityRegisterValidator2.checkCityRegister(studentOrder);
+
+        return answerCityRegister1;
     }
+
     static AnswerWedding checkWedding(StudentOrder studentOrder) {
         System.out.println("Wedding is running");
         return new AnswerWedding();
