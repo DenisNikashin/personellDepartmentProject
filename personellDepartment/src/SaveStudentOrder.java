@@ -1,3 +1,5 @@
+import edu.studentOrder.domaine.StudentOrder;
+
 public class SaveStudentOrder {
     public static void main(String[] args) {
         StudentOrder studentOrder = new StudentOrder();

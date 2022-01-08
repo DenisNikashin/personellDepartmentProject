@@ -1,3 +1,10 @@
+import edu.studentOrder.domaine.*;
+import edu.studentOrder.mail.MailSender;
+import edu.studentOrder.validator.ChildrenValidator;
+import edu.studentOrder.validator.CityRegisterValidator;
+import edu.studentOrder.validator.StudendsValidator;
+import edu.studentOrder.validator.WeddingValidator;
+
 public class StudentOderValidator {
     public static void main(String[] args) {
         checkAll();
@@ -25,6 +32,7 @@ public class StudentOderValidator {
 
     private static void sendMail(StudentOrder studentOrder) {
         System.out.println("The mail is checking");
+        new MailSender().sendMail(studentOrder);
     }
 
     static StudentOrder readStudentOrder() {
@@ -48,14 +56,17 @@ public class StudentOderValidator {
 
     static AnswerWedding checkWedding(StudentOrder studentOrder) {
         System.out.println("Wedding is running");
-        return new AnswerWedding();
+        WeddingValidator weddingValidator = new WeddingValidator();
+        return weddingValidator.checkWedding(studentOrder);
     }
     static AnswerChildren checkChildren(StudentOrder studentOrder) {
         System.out.println("Check Children method is running");
-        return new AnswerChildren();
+        ChildrenValidator childrenValidator = new ChildrenValidator();
+        return childrenValidator.checkChildren(studentOrder);
     }
     static AnswerStudent checkStudents(StudentOrder studentOrder) {
         System.out.println("Students is checking");
-        return new AnswerStudent();
+        StudendsValidator studendsValidator = new StudendsValidator();
+        return studendsValidator.checkStudents(studentOrder);
     }
 }
